@@ -12,7 +12,38 @@ This file contains the following functions:
 import shutil
 from pathlib import Path
 import json
+import sys
+import argparse
 
+def get_download_folder_path():
+    """Gets the path to the downloads folder from the command line arguments, or defaults to the user's downloads folder
+    if no argument is provided.
+    Returns
+    -------
+    Path
+        the path to the downloads folder
+    """
+    parser = argparse.ArgumentParser(description='Sort files in a specified folder.')
+    parser.add_argument('folder', nargs='?', default=str(Path.home() / 'Downloads'), help='the path to the folder to be organized (default: user\'s Downloads folder)')
+    
+    args = parser.parse_args()
+
+    # Check if the specified folder exists
+    if not Path(args.folder).exists():
+        print(f"Error: The specified folder '{args.folder}' does not exist.")
+        sys.exit(1)
+    
+    # Check if the specified folder is a directory
+    if not Path(args.folder).is_dir():
+        print(f"Error: The specified path '{args.folder}' is not a directory.")
+        sys.exit(1)
+
+    # If there are no arguments, tell the user that its using the default downloads folder
+    if not args.folder:
+        print(f"Using default downloads folder: {Path.home() / 'Downloads'}")
+        args.folder = str(Path.home() / 'Downloads')
+
+    return Path(args.folder)
 
 def move_file(file, destination):
     """Checks if the destination folder exists, creates it if it doesn't, then moves a file into it
@@ -54,7 +85,5 @@ def sort_folder(folder_path):
 
 
 if __name__ == '__main__':
-    home_directory = str(Path.home())
-    downloads_path = Path(f'{home_directory}/Downloads')
-
+    downloads_path = get_download_folder_path()
     sort_folder(downloads_path)
