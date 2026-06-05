@@ -62,26 +62,49 @@ def move_file(file, destination):
         print(e)
 
 
-def sort_folder(folder_path):
-    """Iterates through the files in the folder, sorting them into sub-folders by extension.
+def sort_folder(folder_path, extensions_map=None, category_names=None, root_path=None):
+    """Iterates through the files in the folder recursively, sorting them into sub-folders by extension.
     Parameters
     ----------
     folder_path : Path
         the path to the folder to be organized
+    extensions_map : dict
+        the mapping of file extensions to folder names (loaded from config.json)
+    category_names : set
+        the set of category folder names to avoid recursing into
+    root_path : Path
+        the root folder path where category folders should be created
     """
-    with open('config.json', encoding='utf-8') as f:
-        categories = json.load(f)
+    # Load config only on first call
+    if extensions_map is None:
+        with open('config.json', encoding='utf-8') as f:
+            categories = json.load(f)
 
-    extensions_map = {}
-    for category in categories:
-        folder_name = category['name']
-        for extension in category['extensions']:
-            extensions_map[extension] = folder_name
+        extensions_map = {}
+        category_names = set()
+        for category in categories:
+            folder_name = category['name']
+            category_names.add(folder_name)
+            for extension in category['extensions']:
+                extensions_map[extension] = folder_name
+        
+        root_path = folder_path
 
-    for file in folder_path.iterdir():
-        if file.is_file() and not file.name.startswith('.'):
-            destination = extensions_map.get(file.suffix, 'Other')
-            move_file(file, file.parent.joinpath(destination))
+    # Get all items in the current folder
+    items = list(folder_path.iterdir())
+    
+    for item in items:
+        if item.is_file() and not item.name.startswith('.'):
+            # Determine the correct destination folder (always at root level)
+            destination_folder = extensions_map.get(item.suffix, 'Other')
+            correct_destination = root_path.joinpath(destination_folder)
+            
+            # Move file if it's not already in the correct location
+            if item.parent != correct_destination:
+                move_file(item, correct_destination)
+        elif item.is_dir() and not item.name.startswith('.') and item.name not in category_names:
+            # Recursively sort subdirectories (but not the category folders themselves)
+            sort_folder(item, extensions_map, category_names, root_path)
 
 
 if __name__ == '__main__':

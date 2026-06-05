@@ -4,15 +4,20 @@
     "extensions": [
       ".exe",
       ".pkg",
-      ".dmg",
-      ".msi"
+      ".msi",
+      ".app",
+      ".bat",
+      ".cmd",
+      ".com",
+      ".scr"
     ]
   },
   {
     "name": "Compressed",
     "extensions": [
-      ".zip",
-      ".rar"
+      ".zipx",
+      ".ace",
+      ".arj"
     ]
   },
   {
@@ -25,21 +30,62 @@
       ".xls",
       ".ppt",
       ".xlsx",
-      ".pptx"
+      ".pptx",
+      ".odt",
+      ".ods",
+      ".odp",
+      ".rtf",
+      ".wps",
+      ".wpd",
+      ".pages",
+      ".numbers",
+      ".keynote",
+      ".tex",
+      ".markdown",
+      ".md",
+      ".rst"
     ]
   },
   {
     "name": "Music",
     "extensions": [
       ".mp3",
-      ".wav"
+      ".wav",
+      ".flac",
+      ".aac",
+      ".m4a",
+      ".opus",
+      ".midi",
+      ".mid",
+      ".wma",
+      ".alac",
+      ".aiff",
+      ".dsd",
+      ".ogg",
+      ".vorbis",
+      ".apl"
     ]
   },
   {
     "name": "Videos",
     "extensions": [
       ".mp4",
-      ".mkv"
+      ".mkv",
+      ".avi",
+      ".mov",
+      ".flv",
+      ".wmv",
+      ".webm",
+      ".m4v",
+      ".mpg",
+      ".mpeg",
+      ".3gp",
+      ".ogv",
+      ".ts",
+      ".m2ts",
+      ".mts",
+      ".vob",
+      ".f4v"
     ]
   },
   {
@@ -51,7 +97,198 @@
       ".svg",
       ".gif",
       ".tif",
-      ".tiff"
+      ".tiff",
+      ".bmp",
+      ".webp",
+      ".ico",
+      ".heic",
+      ".heif",
+      ".raw",
+      ".pcx",
+      ".jp2",
+      ".j2k",
+      ".jpf",
+      ".jpx",
+      ".ppm",
+      ".pgm",
+      ".pbm"
+    ]
+  },
+  {
+    "name": "Program Extensions",
+    "extensions": [
+      ".dll",
+      ".so",
+      ".dylib",
+      ".lib",
+      ".a",
+      ".o",
+      ".obj",
+      ".sys",
+      ".ocx"
+    ]
+  },
+  {
+    "name": "Source Code",
+    "extensions": [
+      ".py",
+      ".js",
+      ".ts",
+      ".tsx",
+      ".jsx",
+      ".java",
+      ".c",
+      ".cpp",
+      ".cc",
+      ".cxx",
+      ".h",
+      ".hpp",
+      ".cs",
+      ".rb",
+      ".go",
+      ".rs",
+      ".swift",
+      ".kt",
+      ".scala",
+      ".groovy",
+      ".pl",
+      ".lua",
+      ".r",
+      ".vb",
+      ".m",
+      ".mm",
+      ".clj",
+      ".ex",
+      ".erl"
+    ]
+  },
+  {
+    "name": "Web Files",
+    "extensions": [
+      ".html",
+      ".htm",
+      ".css",
+      ".scss",
+      ".less",
+      ".sass",
+      ".asp",
+      ".aspx",
+      ".jsp",
+      ".php",
+      ".phtml",
+      ".xhtml"
+    ]
+  },
+  {
+    "name": "Data Files",
+    "extensions": [
+      ".csv",
+      ".sql",
+      ".db",
+      ".sqlite",
+      ".mdb",
+      ".accdb",
+      ".dbf",
+      ".parquet",
+      ".avro",
+      ".msgpack",
+      ".protobuf",
+      ".tsv",
+      ".ndjson",
+      ".jsonl"
+    ]
+  },
+  {
+    "name": "Archives",
+    "extensions": [
+      ".zip",
+      ".7z",
+      ".rar",
+      ".tar",
+      ".tar.gz",
+      ".tgz",
+      ".tar.bz2",
+      ".tbz",
+      ".tar.xz",
+      ".txz",
+      ".gz",
+      ".bz2",
+      ".xz",
+      ".lz",
+      ".lzma",
+      ".iso",
+      ".dmg",
+      ".cab",
+      ".jar",
+      ".apk",
+      ".war"
+    ]
+  },
+  {
+    "name": "Design",
+    "extensions": [
+      ".psd",
+      ".ai",
+      ".eps",
+      ".sketch",
+      ".fig",
+      ".xd",
+      ".cdr",
+      ".indd",
+      ".afdesign",
+      ".blend",
+      ".max",
+      ".obj",
+      ".fbx",
+      ".dae",
+      ".gltf",
+      ".glb"
+    ]
+  },
+  {
+    "name": "ebooks",
+    "extensions": [
+      ".epub",
+      ".mobi",
+      ".azw",
+      ".azw3",
+      ".ibooks"
+    ]
+  },
+  {
+    "name": "Subtitles",
+    "extensions": [
+      ".srt",
+      ".sub",
+      ".sbv",
+      ".vtt",
+      ".ass",
+      ".ssa",
+      ".mpl"
+    ]
+  },
+  {
+    "name": "Config Files",
+    "extensions": [
+      ".json",
+      ".yaml",
+      ".yml",
+      ".toml",
+      ".ini",
+      ".conf",
+      ".config",
+      ".properties",
+      ".xml",
+      ".env"
+    ]
+  },
+  {
+    "name": "Logs",
+    "extensions": [
+      ".log",
+      ".out",
+      ".err",
+      ".trace"
     ]
   }
 ]
