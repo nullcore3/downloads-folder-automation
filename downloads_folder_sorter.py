@@ -28,22 +28,23 @@ def get_download_folder_path():
     
     args = parser.parse_args()
 
+    # Strip quotes if the user included them
+    folder_path = args.folder.strip('"\'')
+    
+    # Convert to Path object (handles both / and \ on Windows)
+    folder_path = Path(folder_path).resolve()
+
     # Check if the specified folder exists
-    if not Path(args.folder).exists():
-        print(f"Error: The specified folder '{args.folder}' does not exist.")
+    if not folder_path.exists():
+        print(f"Error: The specified folder '{folder_path}' does not exist.")
         sys.exit(1)
     
     # Check if the specified folder is a directory
-    if not Path(args.folder).is_dir():
-        print(f"Error: The specified path '{args.folder}' is not a directory.")
+    if not folder_path.is_dir():
+        print(f"Error: The specified path '{folder_path}' is not a directory.")
         sys.exit(1)
 
-    # If there are no arguments, tell the user that its using the default downloads folder
-    if not args.folder:
-        print(f"Using default downloads folder: {Path.home() / 'Downloads'}")
-        args.folder = str(Path.home() / 'Downloads')
-
-    return Path(args.folder)
+    return folder_path
 
 def move_file(file, destination):
     """Checks if the destination folder exists, creates it if it doesn't, then moves a file into it
